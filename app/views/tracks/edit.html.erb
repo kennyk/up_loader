@@ -1,0 +1,24 @@
+<h1>Editing track</h1>
+
+<% form_for(@track) do |f| %>
+  <%= f.error_messages %>
+  
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  
+    <p>
+    <%= f.label :id3Title %><br />
+    <%= f.text_field :id3Title %>
+  </p>
+  
+  <p>
+    <%= f.label :id3Artist %><br />
+    <%= f.text_field :id3Artist %>
+  </p>
+  
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>

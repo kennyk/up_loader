@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Tracks: <%= controller.action_name %></title>
+  <!--%= stylesheet_link_tag 'scaffold' %-->
+  <%= stylesheet_link_tag 'html' %>
+  <%= stylesheet_link_tag 'layout' %>
+  <%= yield :styles %>
+  
+  <%= javascript_include_tag "prototype" %>
+  <%= yield :scripts %>
+</head>
+<body <%= yield :onLoad %>>
+	<div id="content">
+		<div id="header">
+
+		  <div id="title">
+		      <h1>up_loader</h1>
+		
+		      <h2>^</h2>
+		    </div>
+		
+		    <img src="/images/bg/balloons.gif" alt="balloons" class="balloons" />
+		    <img src="/images/bg/header_left.jpg" alt="left slice" class="left" />
+		    <img src="/images/bg/header_right.jpg" alt="right slice" class="right" />
+		
+		  </div>
+		
+		
+		  <!-- MAIN MENU: Top horizontal menu of the site.  Use class="here" to turn the current page tab on -->
+		  <div id="mainMenu">
+		    <ul class="floatRight">
+		      <li><a href="/tracks" title="tracks" <%= yield :inIndex %>>Show tracks</a></li>
+			  <li><a href="/tracks/new" title="new" <%= yield :inNew %>>New track</a></li>
+		    </ul>
+		  </div>
+
+		
+		  <div id="page">
+			<div id="width100">
+				<%= yield %>
+			</div>
+		<div>
+	</div>
+</body>
+</html>

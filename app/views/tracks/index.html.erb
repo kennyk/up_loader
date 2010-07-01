@@ -1,0 +1,25 @@
+<% content_for :inIndex do %>class='here'<% end %>
+
+<% content_for :styles do %>
+	<%= stylesheet_link_tag 'index'%>
+<% end %>
+
+<h1>Listing tracks</h1><br/>
+
+
+<% @tracks.each do |track| %>
+  <div class="trackDiv">
+	<h4 style="display:inline;"> <%=h track.name %> </h4><br/>
+	<audio src="<%=h track.relativeWebPath %>" controls="controls"></audio> <br/>
+	<%=h track.id3Title %>
+	<% if track.id3Artist %> by <% end %>
+	<%=h track.id3Artist %><% if track.id3Artist %>, <% end %>
+	<%=h track.displayTrackLength %>
+	<br/>
+	
+	<%= link_to 'Download', track.relativeWebPath %>
+    <%= link_to 'Edit', edit_track_path(track) %>
+    <%= link_to 'Delete', track, :confirm => 'Are you sure?', :method => :delete %>
+  </div>
+<% end %>
+

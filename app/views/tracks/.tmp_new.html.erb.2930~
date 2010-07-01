@@ -1,0 +1,42 @@
+<% content_for :scripts do %>
+	<%= javascript_include_tag 'livepipe' %>
+	<%= javascript_include_tag 'progressBar' %>
+	<%= javascript_include_tag 'uploader' %>
+<% end %>
+
+<% content_for :styles do %>
+	<%= stylesheet_link_tag 'progressBar'%>
+	<%= stylesheet_link_tag 'uploader'%>
+<% end %>
+
+<h1>New track</h1>
+<% form_for(@track, :html => { :multipart => true, :target => 'progressFrame' }, :url => "/tracks?X-Progress-ID=#{@uuid}") do |f| %>
+  <%= f.error_messages %>
+  
+  <%= hidden_field_tag 'X-Progress-ID', @uuid %>
+  <%= hidden_field_tag 'track[fileName]', @uuid %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name, :OnKeyUp => 'showRename()' %>
+    <button id="rename" onClick="renameTrack()" style="display:none">Save name</button>
+  </p>
+  <p>
+  	<p id="fileUploadPrompt"><label for="upload_file">File</label><br/>
+	<%= file_field 'upload', 'datafile' %></p>
+  </p>
+  
+  
+  <p>
+    <%= f.submit 'Create', :onclick => 'return startUpload()' %>
+  </p>
+<% end %>
+
+<div id="progress" style="display:none;">
+	<div id="progress_bar"></div>
+	<p id="progress_percent"></p>
+</div>
+ <iframe id="progressFrame" name="progressFrame" style="display:none;"></iframe>
+ 
+
+<%= link_to 'Show tracks', tracks_path %>

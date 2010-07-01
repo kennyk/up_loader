@@ -1,0 +1,17 @@
+#progress{
+	margin-top: 15px; 
+	height: 20px; 
+	position: relative; 
+	clear: both;
+}
+
+#progressFrame{
+	border: hidden;
+	height: 40px;
+	width: 100%;
+	margin-left: 15px;
+}
+audio{
+	margin: 0;
+	padding: 0;
+}

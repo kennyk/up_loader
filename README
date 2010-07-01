@@ -1,0 +1,28 @@
+
+Technologies used:
+
+Developed with Ruby on Rails 2.3.5, hosted with 2.3.7, 
+on Apache with mod_passanger; MySQL used for production db.  Only
+track metadata is stored in the database - the actual files are kept on the
+OS file system.
+
+Progress monitoring provided by apache-upload-progress-module
+(http://github.com/drogus/apache-upload-progress-module)
+
+Progress bar provided by livepipe's Control.ProgressBar.
+(http://livepipe.net/control/progressbar)
+I had to make some minor modifications to get this to work with the aforementioned
+progress module, to show the percentage of upload completion, and to make 
+it behave nicer when the upload was finished.
+
+Timestamp-based uuid's generated using the uuidtools gem
+(http://rubyforge.org/projects/uuidtools/), 
+which implements the RFC4122 spec (http://tools.ietf.org/html/rfc4122), and 
+hence have only a 1/2^128 chance of colliding.  However, just to be sure,
+the controller performs a check against the database.
+
+ID3 tag extraction and editing is done using TagLib 
+(http://developer.kde.org/~wheeler/taglib.html)
+with ruby bindings from ruby-taglib (http://www.hakubi.us/ruby-taglib/).
+
+MP3 to OGG conversion is done on the command line with mpg321 and oggenc.
